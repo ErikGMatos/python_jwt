@@ -8,7 +8,10 @@ class __DbConnectionHandler:  # pylint: disable=invalid-name
         self.__conn = None
 
     def connect(self):
-        self.__conn = sqlite3.connect(self.__connection_string)
+        self.__conn = sqlite3.connect(
+            self.__connection_string,
+            check_same_thread=False
+        )
 
     def get_connection(self) -> Connection:
         return self.__conn
