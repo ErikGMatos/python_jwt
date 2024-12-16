@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.controllers.login_creator import LoginCreator
+from src.controllers.login_creator import LoginCreatorController
 from src.drivers.password_handler import PasswwordHandler
 
 USERNAME = "meuUsername"
@@ -16,7 +16,7 @@ class MockUserRepository:
 
 
 def test_create():
-    login_creator = LoginCreator(MockUserRepository())
+    login_creator = LoginCreatorController(MockUserRepository())
     response = login_creator.create(USERNAME, PASSWORD)
 
     assert response["access"] is True
@@ -25,7 +25,7 @@ def test_create():
 
 
 def test_create_with_wrong_password():
-    login_creator = LoginCreator(MockUserRepository())
+    login_creator = LoginCreatorController(MockUserRepository())
 
     with pytest.raises(Exception):
         login_creator.create(USERNAME, "outraSenha")
