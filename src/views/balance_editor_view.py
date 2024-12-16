@@ -14,7 +14,8 @@ class BalanceEditorView(ViewInteface):
         user_id = http_request.params.get("user_id")
 
         self.__validate_inputs(new_balance, user_id)
-        response = self.__controller.edit(new_balance, user_id)
+        response = self.__controller.edit(
+            new_balance=new_balance, user_id=user_id)
         return HttpResponse(body={"data": response}, status_code=200)
 
     def __validate_inputs(self, new_balance: any, user_id: any) -> None:

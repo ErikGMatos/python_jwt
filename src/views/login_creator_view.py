@@ -14,7 +14,7 @@ class LoginCreatorView(ViewInteface):
         password = http_request.body.get("password")
         self.__validate_inputs(username, password)
 
-        response = self.__controller.registry(username, password)
+        response = self.__controller.create(username, password)
 
         return HttpResponse(body={"data": response}, status_code=200)
 
