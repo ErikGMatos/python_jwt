@@ -1,5 +1,6 @@
 
 from src.controllers.interfaces.balance_editor import BalanceEditorInterface
+from src.errors.types.http_bad_request import HttpBadRequestError
 from src.views.http_types.http_request import HttpRequest
 from src.views.http_types.http_response import HttpResponse
 from src.views.interfaces.view_interface import ViewInteface
@@ -27,4 +28,4 @@ class BalanceEditorView(ViewInteface):
             or int(headers_user_id) != int(user_id)
             or not isinstance(user_id, str)
         ):
-            raise Exception("Invalid inputs")
+            raise HttpBadRequestError("Invalid inputs")
